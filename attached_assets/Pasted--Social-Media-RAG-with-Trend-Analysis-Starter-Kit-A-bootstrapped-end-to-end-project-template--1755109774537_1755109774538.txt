@@ -1,0 +1,454 @@
+# Social Media RAG with Trend Analysis — Starter Kit
+
+A bootstrapped, end‑to‑end project template to ingest social content, detect trends, retrieve cultural context, and generate explanations — with a deployable Streamlit demo and a clean GitHub structure.
+
+---
+
+## 1) System Overview
+
+**Goal:** Build a Retrieval‑Augmented Generation (RAG) system that:
+
+* Ingests social posts from multiple platforms.
+* Detects trending topics/hashtags via time‑series signals.
+* Retrieves cultural/historical context from a knowledge base.
+* Generates concise explanations and risk flags (misinfo, NSFW, hate, etc.).
+* Monitors in near‑real‑time and sends alerts.
+
+### Core MVP Scope (3‑day friendly)
+
+* **Sources:** Reddit (PRAW) + RSS/Atom feeds (for public posts & tech/news subreddits). Optional: X/Twitter (bearer token), YouTube comments.
+* **Storage:** SQLite for raw/normalized posts; ChromaDB for vector search.
+* **Embeddings:** `sentence-transformers/all-MiniLM-L6-v2` (no paid key required). Optional: OpenAI embeddings.
+* **Context sources:** Wikipedia + curated background docs (markdown/CSV) → embedded into Chroma.
+* **LLM generation:** Local `google/flan-t5-base` (for summaries) by default; optional OpenAI/other providers for higher quality.
+* **Frontend:** Streamlit (dashboard + topic explorer + alerts config).
+* **Evaluation:** Basic retrieval accuracy (top‑k hit rate), latency metrics, optional RAGAS.
+
+---
+
+## 2) High‑Level Architecture
+
+```mermaid
+flowchart LR
+  subgraph Ingestion
+    R[Reddit API] --> N[Normalizer]
+    RSS[RSS/Atom] --> N
+    X[(Twitter/X API)*] --> N
+  end
+
+  N -->|Raw posts + metadata| SQL[(SQLite)]
+  N -->|Clean text| QP[Queue/Batch]
+
+  subgraph Processing
+    QP --> FE[Feature Extractor\n(tokens, hashtags, entities)]
+    FE --> TS[Trend Scorer\n(z-score, EWM growth)]
+    FE --> EM[Embedder\n(sentence-transformers)]
+  end
+
+  EM --> VDB[(ChromaDB)]
+  TS --> DS[(Trends table in SQLite)]
+
+  subgraph Context
+    WK[Wikipedia fetcher] --> KB[Docs Store]
+    CB[Curated background docs] --> KB
+    KB --> EM
+  end
+
+  subgraph Serving
+    UI[Streamlit App]
+    UI -->|Query| RT[Retriever → Generator]
+    RT --> UI
+    UI -->|Alerts cfg| ALT[Alert Engine]
+    DS --> ALT
+    ALT --> NTFS[(Email/Webhook/Discord)]
+```
+
+> *Twitter/X is optional depending on access. The template includes a connector stub.*
+
+---
+
+## 3) Repo Structure
+
+```
+social-rag-trends/
+├─ app/
+│  ├─ streamlit_app.py
+│  ├─ components/
+│  │  ├─ cards.py
+│  │  └─ charts.py
+│  └─ pages/
+│     ├─ 1_📈_Trends_Dashboard.py
+│     ├─ 2_🔎_Topic_Explorer.py
+│     └─ 3_🚨_Alerts.py
+├─ rag/
+│  ├─ embeddings.py
+│  ├─ retriever.py
+│  ├─ generator.py
+│  ├─ chunking.py
+│  └─ evaluation.py
+├─ pipeline/
+│  ├─ ingest_reddit.py
+│  ├─ ingest_rss.py
+│  ├─ ingest_x_stub.py
+│  ├─ normalize.py
+│  ├─ features.py
+│  ├─ trends.py
+│  └─ backfill_seed.py
+├─ context/
+│  ├─ curated/
+│  │  ├─ culture_glossary.md
+│  │  ├─ meme_timeline_2010s.md
+│  │  └─ social_movements_overview.md
+│  └─ wikipedia_cache/
+├─ data/
+│  ├─ social.db        # SQLite
+│  └─ chroma/          # ChromaDB persistent dir
+├─ alerts/
+│  └─ notifier.py
+├─ scripts/
+│  ├─ run_ingestion.sh
+│  ├─ index_context.py
+│  ├─ refresh_trends.py
+│  └─ export_eval_set.py
+├─ .env.example
+├─ requirements.txt
+├─ Dockerfile
+├─ README.md
+└─ LICENSE
+```
+
+---
+
+## 4) Environment Variables (`.env.example`)
+
+```
+# Mandatory
+DB_PATH=./data/social.db
+CHROMA_PATH=./data/chroma
+EMBEDDING_MODEL=sentence-transformers/all-MiniLM-L6-v2
+GEN_MODEL=google/flan-t5-base
+
+# Optional: OpenAI (if you switch models)
+OPENAI_API_KEY=
+OPENAI_EMBED_MODEL=text-embedding-3-large
+OPENAI_GEN_MODEL=gpt-4o-mini
+
+# Reddit
+REDDIT_CLIENT_ID=
+REDDIT_CLIENT_SECRET=
+REDDIT_USER_AGENT=social-rag-trends/0.1
+
+# RSS feeds (comma-separated)
+RSS_FEEDS=https://www.reddit.com/r/news/.rss,https://www.reddit.com/r/technology/.rss
+
+# Alerts
+ALERT_WEBHOOK_URL=
+ALERT_EMAIL_SMTP=
+ALERT_EMAIL_USER=
+ALERT_EMAIL_PASS=
+ALERT_EMAIL_TO=
+```
+
+Copy `.env.example` → `.env` and fill values.
+
+---
+
+## 5) Setup & Run — Step by Step
+
+### Local (no Docker)
+
+1. **Clone & enter:**
+
+   ```bash
+   git clone https://github.com/<your-username>/social-rag-trends.git
+   cd social-rag-trends
+   ```
+2. **Python env:**
+
+   ```bash
+   python -m venv .venv && source .venv/bin/activate  # Windows: .venv\Scripts\activate
+   pip install -U pip
+   pip install -r requirements.txt
+   ```
+3. **Env & directories:**
+
+   ```bash
+   cp .env.example .env
+   mkdir -p data/chroma context/wikipedia_cache
+   ```
+4. **Index context knowledge base:**
+
+   ```bash
+   python scripts/index_context.py
+   ```
+5. **Seed ingestion (Reddit & RSS):**
+
+   ```bash
+   python pipeline/backfill_seed.py --hours 24
+   python scripts/refresh_trends.py
+   ```
+6. **Run Streamlit app:**
+
+   ```bash
+   streamlit run app/streamlit_app.py
+   ```
+
+### Docker
+
+1. Build & run:
+
+   ```bash
+   docker build -t social-rag-trends .
+   docker run --env-file .env -p 8501:8501 -v $(pwd)/data:/app/data social-rag-trends
+   ```
+
+### Deploy to Hugging Face Spaces (recommended quick demo)
+
+1. Create a new **Gradio/Streamlit Space**.
+2. Push repo to Space remote.
+3. Ensure `requirements.txt` and `app/streamlit_app.py` exist. Set **Space SDK: Streamlit**.
+4. Add secrets under **Settings → Secrets** (map to `.env` keys). The app reads from environment.
+
+### Deploy to Streamlit Community Cloud
+
+1. Connect repo, set main file: `app/streamlit_app.py`.
+2. Add environment variables in **Advanced settings**.
+
+---
+
+## 6) Key Implementation (Code Skeletons)
+
+> **Note:** These are minimal, runnable skeletons intended to work out‑of‑the‑box with Reddit+RSS and local models. Extend as needed.
+
+### `requirements.txt`
+
+```
+streamlit==1.37.1
+praw==7.7.1
+feedparser==6.0.11
+pandas==2.2.2
+numpy==1.26.4
+scikit-learn==1.5.1
+sentence-transformers==2.7.0
+chromadb==0.5.4
+wikipedia==1.4.0
+transformers==4.42.4
+accelerate==0.33.0
+torch==2.3.1
+python-dotenv==1.0.1
+sqlalchemy==2.0.31
+apscheduler==3.10.4
+requests==2.32.3
+uvicorn==0.30.1
+fastapi==0.111.0
+ragas==0.1.14
+```
+
+### `pipeline/normalize.py`
+
+```python
+from dataclasses import dataclass
+from datetime import datetime
+from typing import Optional
+
+@dataclass
+class NormalizedPost:
+    id: str
+    platform: str  # reddit, rss, twitter
+    author: Optional[str]
+    text: str
+    url: Optional[str]
+    created_at: datetime
+    hashtags: list[str]
+    entities: list[str]
+```
+
+### `pipeline/ingest_reddit.py`
+
+```python
+import os, time, praw
+from datetime import datetime, timezone
+from sqlalchemy import create_engine, text as sql
+from .normalize import NormalizedPost
+from .features import extract_entities
+
+DB = os.getenv("DB_PATH", "./data/social.db")
+engine = create_engine(f"sqlite:///{DB}")
+
+reddit = praw.Reddit(
+    client_id=os.getenv("REDDIT_CLIENT_ID"),
+    client_secret=os.getenv("REDDIT_CLIENT_SECRET"),
+    user_agent=os.getenv("REDDIT_USER_AGENT", "social-rag-trends/0.1"),
+)
+
+SUBS = ["news", "technology", "worldnews", "memes"]
+
+def save(post: NormalizedPost):
+    with engine.begin() as conn:
+        conn.execute(sql(
+            """
+            CREATE TABLE IF NOT EXISTS posts(
+              id TEXT PRIMARY KEY,
+              platform TEXT, author TEXT, text TEXT, url TEXT,
+              created_at TIMESTAMP, hashtags TEXT, entities TEXT
+            )
+            """))
+        conn.execute(sql(
+            """
+            INSERT OR REPLACE INTO posts (id, platform, author, text, url, created_at, hashtags, entities)
+            VALUES (:id, :platform, :author, :text, :url, :created_at, :hashtags, :entities)
+            """),
+            dict(
+                id=post.id, platform=post.platform, author=post.author or "",
+                text=post.text, url=post.url or "",
+                created_at=post.created_at.isoformat(),
+                hashtags=",".join(post.hashtags),
+                entities=",".join(post.entities)
+            )
+        )
+
+def run(limit_per_sub=200):
+    for sub in SUBS:
+        for s in reddit.subreddit(sub).new(limit=limit_per_sub):
+            text = f"{s.title} \n\n{s.selftext or ''}"
+            hashtags = [w[1:] for w in text.split() if w.startswith('#')]
+            entities = extract_entities(text)
+            p = NormalizedPost(
+                id=f"reddit_{s.id}", platform="reddit", author=getattr(s, 'author_fullname', None),
+                text=text[:8000], url=f"https://reddit.com{s.permalink}",
+                created_at=datetime.fromtimestamp(s.created_utc, tz=timezone.utc),
+                hashtags=hashtags, entities=entities
+            )
+            save(p)
+            time.sleep(0.1)
+
+if __name__ == "__main__":
+    run()
+```
+
+### `pipeline/ingest_rss.py`
+
+```python
+import os, feedparser
+from datetime import datetime, timezone
+from sqlalchemy import create_engine, text as sql
+from .normalize import NormalizedPost
+from .features import extract_entities
+
+DB = os.getenv("DB_PATH", "./data/social.db")
+engine = create_engine(f"sqlite:///{DB}")
+
+FEEDS = [u.strip() for u in os.getenv("RSS_FEEDS", "").split(',') if u.strip()]
+
+def save(post: NormalizedPost):
+    with engine.begin() as conn:
+        conn.execute(sql(
+            """
+            CREATE TABLE IF NOT EXISTS posts(
+              id TEXT PRIMARY KEY,
+              platform TEXT, author TEXT, text TEXT, url TEXT,
+              created_at TIMESTAMP, hashtags TEXT, entities TEXT
+            )
+            """))
+        conn.execute(sql(
+            """INSERT OR REPLACE INTO posts VALUES(:id,:platform,:author,:text,:url,:created_at,:hashtags,:entities)"""),
+            dict(id=post.id, platform=post.platform, author=post.author or "",
+                 text=post.text, url=post.url or "",
+                 created_at=post.created_at.isoformat(),
+                 hashtags=",".join(post.hashtags), entities=",".join(post.entities))
+        )
+
+def run():
+    for url in FEEDS:
+        feed = feedparser.parse(url)
+        for e in feed.entries:
+            text = (e.title or "") + "\n\n" + (e.summary or "")
+            hashtags = [w[1:] for w in text.split() if w.startswith('#')]
+            p = NormalizedPost(
+                id=f"rss_{hash((e.link, e.get('published', '')))}",
+                platform="rss", author=e.get('author', ''), text=text[:8000], url=e.link,
+                created_at=datetime.fromtimestamp(e.get('published_parsed').tm_sec if e.get('published_parsed') else datetime.now(timezone.utc).timestamp(), tz=timezone.utc),
+                hashtags=hashtags, entities=extract_entities(text)
+            )
+            save(p)
+
+if __name__ == "__main__":
+    run()
+```
+
+### `pipeline/features.py`
+
+```python
+import re
+from collections import Counter
+
+HASHTAG = re.compile(r"(?i)#[a-z0-9_]+")
+MENTION = re.compile(r"(?i)@[a-z0-9_]+")
+WORD = re.compile(r"(?i)[a-z][a-z0-9_']+")
+
+STOP = set("""
+a the an and or but if on in with for of to is are was were be been being by from as at it this that these those i you he she we they them us our your their not no do does did so just very more most can will would should could about into over under out up down off only new breaking
+""".split())
+
+def tokenize(text: str):
+    return [w.lower() for w in WORD.findall(text) if w.lower() not in STOP]
+
+def extract_entities(text: str):
+    # simple stub: merges hashtags & @mentions as entities
+    ents = set([h.lower() for h in HASHTAG.findall(text)] + [m.lower() for m in MENTION.findall(text)])
+    # keep top frequent content words as pseudo-entities
+    freq = Counter(tokenize(text)).most_common(5)
+    ents.update([w for w,_ in freq])
+    return sorted(ents)
+```
+
+### `pipeline/trends.py`
+
+```python
+import os, pandas as pd
+from sqlalchemy import create_engine
+from datetime import timedelta
+
+DB = os.getenv("DB_PATH", "./data/social.db")
+engine = create_engine(f"sqlite:///{DB}")
+
+def compute_trends(window_hours=24, baseline_hours=168, min_count=10):
+    df = pd.read_sql("SELECT text, created_at, hashtags, entities FROM posts", engine)
+    if df.empty:
+        return pd.DataFrame()
+    df['ts'] = pd.to_datetime(df['created_at'])
+    df['dayhour'] = df['ts'].dt.floor('h')
+    # explode entities + hashtags
+    def split_col(col):
+        return df[col].str.split(',').explode().str.strip().str.lower()
+    e = split_col('entities')
+    h = split_col('hashtags')
+    all_terms = pd.concat([e, h]).dropna()
+    counts = all_terms.groupby([df['dayhour'], all_terms]).size().reset_index(name='count')
+
+    # pivot to time series per term
+    piv = counts.pivot_table(index='dayhour', columns=0, values='count', fill_value=0)
+
+    current = piv.iloc[-window_hours:].sum()
+    baseline = piv.iloc[-(baseline_hours+window_hours):-window_hours].sum()
+
+    # growth = (current - baseline) / sqrt(baseline + 1) ~ z-like score
+    import numpy as np
+    growth = (current - baseline) / np.sqrt(baseline + 1)
+
+    out = (
+        pd.DataFrame({
+            'term': growth.index,
+            'growth_score': growth.values,
+            'current': current.values,
+            'baseline': baseline.values,
+        })
+        .query("current >= @min_count")
+        .sort_values('growth_score', ascending=False)
+        .head(50)
+    )
+
+    with engine.begin() as conn:
+        conn.exec_driver_sql("""
+            CREATE TABLE
+```
