@@ -39,7 +39,7 @@ class TrendAnalyzer:
             WHERE datetime(created_at) > datetime('now', '-{} hours')
             AND entities IS NOT NULL
             AND entities != ''
-            GROUP BY entities, platform, DATE(created_at), HOUR(created_at)
+            GROUP BY entities, platform, DATE(created_at)
             ORDER BY created_at DESC
             """.format(hours_back)
             
@@ -66,7 +66,7 @@ class TrendAnalyzer:
                 return pd.DataFrame()
             
             entity_df = pd.DataFrame(entity_rows)
-            entity_df['created_at'] = pd.to_datetime(entity_df['created_at'])
+            entity_df['created_at'] = pd.to_datetime(entity_df['created_at'], format='mixed')
             
             return entity_df
             
@@ -232,7 +232,7 @@ class TrendAnalyzer:
                         velocity REAL NOT NULL,
                         z_score REAL NOT NULL,
                         created_at TIMESTAMP NOT NULL,
-                        UNIQUE(entity, platform, DATE(created_at))
+                        UNIQUE(entity, platform, created_at)
                     )
                 """))
                 

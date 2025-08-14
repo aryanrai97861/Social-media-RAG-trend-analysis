@@ -1,0 +1,123 @@
+An Internet meme, or meme (, MEEM), is a cultural item (such as an idea, behavior, or style) that spreads across the Internet, primarily through social media platforms. Internet memes manifest in a variety of formats, including images, videos, GIFs, and other viral content. Newer internet memes are often defined as brain rot. Key characteristics of memes include their tendency to be parodied, their use of intertextuality, their viral dissemination, and their continual evolution. The term meme was originally introduced by Richard Dawkins in 1972 to describe the concept of cultural transmission.
+The term Internet meme was coined by Mike Godwin in 1993 in reference to the way memes proliferated through early online communities, including message boards, Usenet groups, and email. The emergence of social media platforms such as YouTube, Twitter, Facebook, and Instagram further diversified memes and accelerated their spread. Newer meme genres include "dank" and surrealist memes, as well as short-form videos popularized by platforms like Vine and TikTok.
+Memes are now recognized as a significant aspect of Internet culture and are the subject of academic research. They appear across a broad spectrum of contexts, including marketing, economics, finance, politics, social movements, religion, and healthcare. While memes are often viewed as falling under fair use protection, their incorporation of material from pre-existing works can sometimes result in copyright disputes.
+
+
+== Characteristics ==
+Internet memes derive from the original concept of "memes" as units of cultural transmission, passed from person to person. In the digital realm, this transmission occurs primarily through online platforms, such as social media. Although related, internet memes differ from traditional memes in that they often represent fleeting trends, whereas the success of traditional memes is measured by their endurance over time. Additionally, internet memes tend to be less abstract in nature compared to their traditional counterparts. They are highly versatile in form and purpose, serving as tools for light entertainment, self-expression, social commentary, and even political discourse.
+Two fundamental characteristics of internet memes are creative reproduction and intertextuality. Creative reproduction refers to the adaptation and transformation of a meme through imitation or parody, either by reproducing the meme in a new context ("mimicry") or by remixing the original material ("remix"). In mimicry, the meme is recreated in a different setting, as seen when different individuals replicate the viral video "Charlie Bit My Finger". Remix, on the other hand, involves technological manipulation, such as altering an image with Photoshop, while retaining elements of the original meme.
+Intertextuality in memes involves the blending of different cultural references or contexts. An example of this is the combination of U.S. politician Mitt Romney's phrase "binders full of women" from the 2012 U.S. presidential debate with a scene from the Korean pop song "Gangnam Style". In this case, the phrase "my binders full of women exploded" is superimposed on a frame from Psy's music video, creating a new meaning by merging political and cultural references from distinct contexts.
+Internet memes can also function as in-jokes within specific online communities, where they convey insider knowledge that may be incomprehensible to outsiders. This fosters a sense of collective identity within the group. Conversely, some memes achieve widespread cultural relevance, being understood and appreciated by broader audiences outside of the originating subculture.
+A study by Michele Knobel and Colin Lankshear examined how Richard Dawkins' three characteristics of successful traditional memes—fidelity, fecundity, and longevity—apply to internet memes. It was found that fidelity in the context of internet memes is better described as replicability, as memes are frequently modified through remixing while still maintaining their core message. Fecundity, or the ability of a meme to spread, is promoted by factors such as humor (such as the comically translated video game line "All your base are belong to us"), intertextuality (as in the various pop culture-referencing renditions of the "Star Wars Kid" viral video), and juxtaposition of seemingly incongruous elements (exemplified in the "Bert is Evil" meme). Finally, longevity is essential for a meme's continued circulation and evolution over time.
+
+
+== Evolution and propagation ==
+
+Internet memes can either remain consistent or evolve over time. This evolution may involve changes in meaning while retaining the meme’s structure, or vice versa, with such transformations occurring either by chance or through deliberate efforts like parody. A study by Miltner examined the lolcats meme, tracing its development from an in-joke within computer and gaming communities on the website 4chan to a broader source of humor and emotional support. As the meme entered mainstream culture, it lost favor with its original creators. Miltner explained that as content moves through different communities, it is reinterpreted to suit the specific needs and desires of those communities, often diverging from the creator’s original intent. Modifications to memes can lead them to transcend social and cultural boundaries.
+Memes spread virally, in a manner similar to the SIR (Susceptible-Infectious-Recovered) model used to describe the transmission of diseases. Once a meme has reached a critical number of individuals, its continued spread becomes inevitable. Research by Coscia examined the factors contributing to a meme’s propagation and longevity, concluding that while memes compete for attention—often resulting in shorter lifespans—they can also collaborate, enhancing their chances of survival. A meme that experiences an exceptionally high peak in popularity is unlikely to endure unless it is uniquely distinct. Conversely, a meme without such a peak, but that coexists with others, tends to have greater longevity. In 2013, Dominic Basulto, writing for The Washington Post, argued that the widespread use of memes, particularly by the marketing and advertising industries, has led to a decline in their original cultural value. Once considered valuable cultural artifacts meant to endure, memes now often convey trivial rather than meaningful ideas.
+
+
+== History ==
+
+
+=== Origins and early memes ===
+
+The word meme was coined by Richard Dawkins in his 1976 book The Selfish Gene as an attempt to explain how aspects of culture replicate, mutate, and evolve (memetics). Emoticons are among the earliest examples of internet memes, specifically the smiley emoticon ":-)", introduced by Scott Fahlman in 1982. The concept of memes in an online context was formally proposed by Mike Godwin in the June 1993 issue of Wired. In 2013, Dawkins characterized an Internet meme as being a meme deliberately altered by human creativity—distinguished from biological genes and his own pre-Internet concept of a meme, which involved mutation by random change and spreading through accurate replication as in Darwinian selection. Dawkins explained that Internet memes are thus a "hijacking of the original idea", evolving the very concept of a meme in this new direction. Nevertheless, by 2013, Limor Shifman solidified the relationship of memes to internet culture and reworked Dawkins' concept for online contexts. Such an association has been shown to be empirically valuable as internet memes carry an additional property that Dawkins' "memes" do not: internet memes leave a footprint in the media through which they propagate (for example, social networks) that renders them traceable and analyzable.
+However, before internet memes were considered truly academic, they were initially a colloquial reference to humorous visual communication online in the mid-late 1990s among internet denizens; examples of these early internet memes include the Dancing Baby and Hampster Dance. Memes of this time were primarily spread via messageboards, Usenet groups, and email, and generally lasted for a longer time than modern memes.
+
+As the Internet protocols evolved, so did memes. Lolcats originated from imageboard website 4chan, becoming the prototype of the "image macro" format (an image overlaid by large text). Other early forms of image-based memes included demotivators (parodized motivational posters), photoshopped images, comics (such as rage comics), and anime fan art, sometimes made by doujin circles in various countries. After the release of YouTube in 2005, video-based memes such as Rickrolling and viral videos such as "Gangnam Style" and the Harlem shake emerged. The appearance of social media websites such as Twitter, Facebook, and Instagram provided additional mediums for the spread of memes, and the creation of meme-generating websites made their production more accessible.
+
+
+=== Modern memes ===
+"Dank memes" are a recent genre of internet memes, which reached mainstream prominence around 2014. Dank memes refer to deliberately zany or odd memes with features such as oversaturated colours, compression artifacts, crude humour, strange captions, and overly loud sounds (termed ear rape). The term dank, which refers to cold, damp places, was adapted as a way to describe memes that fit the aforementioned criteria of a dank meme. The term may also be used to describe memes that have become overused and stale to the point of paradoxically becoming humorous again. Despite having lost popularity since the late 2010s, dank memes have seen several "revival" attempts, popularised on platforms such as TikTok. The phenomenon of dank memes sprouted a subculture called the "meme market", satirising Wall Street and applying the associated jargon (such as "stocks") to internet memes. Originally started on Reddit as /r/MemeEconomy, users jokingly "buy" or "sell" shares in a meme reflecting opinion on its potential popularity.
+
+"Deep-fried" memes refer to those that have been distorted and run through several filters and/or layers of lossy compression. An example of these is the "E" meme, a picture of YouTuber Markiplier photoshopped onto Lord Farquaad from the film Shrek, in turn photoshopped into a scene from businessman Mark Zuckerberg's hearing in Congress and captioned with a lone 'E'. Elizabeth Bruenig of the Washington Post described this as a "digital update to the surreal and absurd genres of art and literature that characterized the tumultuous early 20th century".
+Many modern memes make use of humorously absurd and even surrealist themes. Examples of the former include "they did surgery on a grape", a video depicting a Da Vinci Surgical System performing test surgery on a grape, and the "moth meme", a close-up picture of a moth with captions humorously conveying the insect's love of lamps. Surreal memes incorporate layers of irony to make them unique and nonsensical, often as a means of escapism from mainstream meme culture.
+
+After the success of the application Vine, a format of memes emerged in the form of short videos and scripted sketches. An example is the "What's Nine Plus Ten?" meme, a Vine video depicting a child humorously providing an incorrect answer to a math problem. After the shutdown of Vine in 2017, the de facto replacement became Chinese social network TikTok, which similarly utilises the short video format. The platform has become immensely popular, and is the source of many genres of internet memes as of the mid 2020s.
+In 2022, the term brain rot became used to reflect a shift in how memes, particularly TikTok videos, were being interacted with. The term describes content lacking in quality and meaning, often associated with slang and trends popular among Generation Alpha, such as "skibidi", "rizz", "gyatt", and "fanum tax". The name comes from the perceived negative psychological and cognitive effects caused by exposure to such content.
+By 2024, news outlets documented the spread of AI-generated memes on major platforms, noting their growing role in shaping online discourse.
+
+
+== By context ==
+
+
+=== Marketing ===
+The practice of using memes to market products or services has been termed "memetic marketing". Internet memes allow brands to circumvent the conception of advertisements as irksome, making them less overt and more tailored to the likes of their target audience. Marketing personnel may choose to utilise an existing meme, or create a new meme from scratch. Fashion house Gucci employed the former strategy, launching a series of Instagram ads that reimagined popular memes featuring its watch collection. The image macro "The Most Interesting Man in the World" is an example of the latter, a meme generated from an advertising campaign for the Dos Equis beer brand. Products may also gain popularity through internet memes without intention by the producer themselves; for instance, the film Snakes on a Plane became a cult classic after creation of the website SnakesOnABlog.com by law student Brian Finkelstein.
+Use of memes by brands, while often advantageous, has been subject to criticism for seemingly forced, unoriginal, or unfunny usage of memes, which can negatively impact a brand's image. For example, the fast food company Wendy's began a social media-based approach to marketing that was initially met with success (resulting in an almost 50% profit growth that year), but received criticism after sharing a controversial Pepe meme that was negatively perceived by consumers.
+
+
+=== Economics and finance ===
+
+Meme stocks are a phenomenon where stock values for a company rise significantly in a short period due to a surge in interest online and subsequent buying by investors. Video game retailer GameStop is recognised as the first meme stock. r/WallStreetBets, a subreddit where participants discuss stock trading, and Robinhood Markets, a financial services company, became notable in 2021 for their involvement in the popularisation of meme stocks. "YOLO investors" are a phenomenon that emerged during the COVID-19 pandemic, who are less risk averse in their investments compared to their traditional counterparts.
+Additionally, memes have developed an association with cryptocurrency with the development of meme currencies such as Dogecoin, Shiba Inu Coin, and Pepe Coin. Meme cryptocurrencies have suggested comparisons between meme value and monetary markets.
+
+
+=== Politics ===
+Internet memes are a medium for fast communication to large online audiences, which has led to their use by those seeking to express a political opinion or actively campaign for (or against) a political entity. In some ways, they can be seen as a modern form of the political cartoon, offering a way to democratize political commentary.
+Among the earliest political memes were those arising from the viral Dean scream, an excerpt from a speech delivered by Vermont governor Howard Dean. Over time, Internet memes have become an increasingly important element in political campaigns, as online communities contribute to broader discourse through the use of memes. For example, Ted Cruz's 2016 Republican presidential bid was damaged by a meme that jokingly speculated he was the Zodiac Killer.
+Research has shown the use of memes during elections has a role to play in informing the public on political themes. A study explored this in relation to the 2017 UK general election, and concluded that memes acted as a widely shared conduit for basic political information to audiences who would usually not seek it out. They also found that memes may play some role in increasing voter turnout.
+Some political campaigns have begun to explicitly taken advantage of the increasing influence of memes; as part of the 2020 US presidential campaign, Michael Bloomberg sponsored a number of Instagram accounts (with over 60 million followers collectively) to post memes related to the Bloomberg campaign. The campaign was faulted for treating memes as a commodity that can be bought.
+Beyond their use in elections, Internet memes can become symbols for various political ideologies. A salient example is Pepe the Frog, which has been used as a symbol for the alt-right political movement, as well as for pro-democracy ideologies in the 2019–2020 Hong Kong protests.
+
+
+=== Social movements ===
+
+Internet memes can be powerful tools in social movements, constructing collective identity and providing platform for discourse. During the 2010 It Gets Better Project for LGBTQ+ empowerment, memes were used to uplift LGBTQ+ youth while negotiating the community's collective identity. In 2014, the viral Ice Bucket Challenge raised money and awareness for Amyotrophic Lateral Sclerosis/Motor Neurone Disease (ALS/MND). Furthermore, internet memes proved an important medium in the discourse surrounding the Occupy Wall Street (OWS) movement.
+
+
+=== Religion ===
+Internet memes have also been used in the context of religion. They create a participatory culture that enable individuals to collectively make meaning of religious beliefs, reflecting a form of lived religion. Aguilar et al. of Texas A&M University identified six common genres of religious memes: non-religious image macros with religious themes, image macros featuring religious figures, memes reacting to religion-related news, memes deifying non-religious figures such as celebrities, spoofs of religious images, and video-based memes.
+
+
+=== Healthcare ===
+Social media platforms can increase the speed of dissemination of evidence-based health practices. A study by Reynolds and Boyd found the majority of participants (who were healthcare staff) felt that memes could be an appropriate means of improving healthcare worker's knowledge of and compliance with infection prevention practices. Internet memes were also used in Nigeria to raise awareness of the COVID-19 pandemic, with healthcare professionals using the medium to disseminate information on the virus and its vaccine.
+
+
+== Copyright ==
+Since many memes are derived from pre-existing works, it has been contended that memes violate the copyright of the original authors. However, some view memes as falling under the ambit of fair use in the United States. This dilemma has caused conflict between meme producers and copyright owners: for example, Getty Images' demand for payment from the blog Get Digital for publishing the "Socially Awkward Penguin" meme without permission.
+
+
+=== United States ===
+Under United States copyright law, copyright protection subsists in "original works of authorship fixed in any tangible medium of expression, now known or later developed, from which they can be perceived, reproduced, or otherwise communicated, either directly or with the aid of a machine or device". It is disputed whether the use of memes constitutes copyright infringement.
+
+Fair use is a defence under U.S. copyright law which protects work made using other copyrighted works. Section 107 of the 1976 Copyright Act outlines four factors for analysis of fair use:
+
+The purpose and character of the use,
+The nature of the copyrighted work,
+The amount and substantiality of the portion used, and
+The effect of the use upon the potential market for or value of the copyrighted work.
+The first factor implies the secondary use of a copyrighted work should be "transformative" (that is, giving novel meaning or expression to the original work); many memes fulfil this criterion, placing pieces of media in a new context to serve a different purpose to that of the original author. The second factor favours copied works drawing from factual sources, which may be problematic for memes derived from fictional works (such as films). Many of these memes, however, only use small portions of such works (such as still images), favouring an argument of fair use per the third factor. With regards to the fourth factor, most memes are non-commercial in nature and thus would not have adverse effects on the potential market for the copyright work. Given these factors, and the overall reliance of memes on appropriation of other sources, it has been argued that they deserve protection from copyright infringement suits.
+
+
+==== Non-fungible tokens ====
+Some individuals who are subjects of memes (and thus the copyright holders) have made money through sale of non-fungible tokens (NFTs) in auctions. Ben Lashes, a manager of numerous memes, stated their sales as NFTs made over US$2 million and established memes as serious forms of art. One example is Disaster Girl, based on a photo of Zoe Roth at age 4 taken in Mebane, North Carolina, in January 2005. After this photo became famous and was used hundreds of times without permission, Roth decided to sell the original copy as an NFT for US$539,973 (equivalent to $626,576 in 2024), with an agreement for a further 10 percent share of any future sales.
+
+
+== See also ==
+
+List of Internet phenomena
+Remix culture
+Short-form content
+
+
+== References ==
+
+
+== Further reading ==
+
+
+=== Books ===
+Blackmore, Susan (2000). The Meme Machine. OUP Oxford. ISBN 978-0-19-157461-0.
+Distin, Kate (2005). The Selfish Meme: A Critical Reassessment. Cambridge University Press. ISBN 978-0-521-60627-1.
+Mina, An Xiao (2019). Memes to Movements: How the World's Most Viral Media Is Changing Social Protest and Power. Beacon Press. ISBN 978-0807056585.
+Shifman, Limor (2013). Memes in Digital Culture. MIT Press. ISBN 978-0-262-31770-2.
+
+
+=== Articles ===
+Wiggins, Bradley (September 22, 2014). "How the Russia-Ukraine crisis became a magnet for memes". The Conversation.
+Wiggins, Bradley E; Bowers, G Bret (December 2015). "Memes as genre: A structurational analysis of the memescape". New Media & Society. 17 (11): 1886–1906. doi:10.1177/1461444814535194. S2CID 30729349.
+
+
+== External links ==
+ Media related to Internet memes at Wikimedia Commons

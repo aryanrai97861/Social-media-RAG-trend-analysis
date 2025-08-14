@@ -27,7 +27,7 @@ STOP_WORDS = set([
     'think', 'also', 'around', 'another', 'came', 'come', 'work',
     'three', 'must', 'because', 'does', 'part', 'even', 'place',
     'well', 'such', 'here', 'take', 'why', 'help', 'put', 'different',
-    'away", "turn", "want", "every", "don\'t", "should", "never",
+    "away", "turn", "want", "every", "don\'t", "should", "never",
     'year', 'still', 'public', 'read', 'know', 'large', 'available',
     'end', 'become', 'member', 'please', 'including', 'old', 'see',
     'however', 'given', 'both', 'important', 'though', 'information',

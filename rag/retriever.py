@@ -4,6 +4,7 @@ from typing import List, Dict, Any, Optional
 import numpy as np
 
 # Try to import ChromaDB, fallback if not available
+from .fallback_ai import FallbackVectorDB
 try:
     import chromadb
     from chromadb.config import Settings
@@ -32,39 +33,31 @@ class RAGRetriever:
     
     def _initialize_client(self):
         """Initialize ChromaDB client and collection"""
+        if not HAS_CHROMADB:
+            raise RuntimeError("ChromaDB not installed, install with: pip install chromadb")
+
+        os.makedirs(self.chroma_path, exist_ok=True)
         try:
-            if HAS_CHROMADB:
-                # Create directory if it doesn't exist
-                os.makedirs(self.chroma_path, exist_ok=True)
-                
-                # Initialize client
-                self.client = chromadb.PersistentClient(path=self.chroma_path)
-                
-                # Get or create collection
-                try:
-                    self.collection = self.client.get_collection(
-                        name=self.collection_name,
-                        embedding_function=None  # We'll handle embeddings manually
-                    )
-                    logging.info(f"Loaded existing collection: {self.collection_name}")
-                except ValueError:
-                    # Collection doesn't exist, create it
-                    self.collection = self.client.create_collection(
-                        name=self.collection_name,
-                        embedding_function=None
-                    )
-                    logging.info(f"Created new collection: {self.collection_name}")
-            else:
-                # Use fallback vector database
-                self.collection = FallbackVectorDB(self.collection_name)
-                logging.warning(f"Using fallback vector database - ChromaDB not available")
-        
+            self.client = chromadb.PersistentClient(path=self.chroma_path)
+            try:
+                self.collection = self.client.get_collection(
+                    name=self.collection_name,
+                    embedding_function=None
+                )
+                logging.info(f"Loaded existing collection: {self.collection_name}")
+            except Exception:
+                # If not found or any error, create it
+                self.collection = self.client.create_collection(
+                    name=self.collection_name,
+                    embedding_function=None
+                )
+                logging.info(f"Created new collection: {self.collection_name}")
         except Exception as e:
-            logging.error(f"Error initializing vector database: {str(e)}")
-            # Use fallback as last resort
-            self.collection = FallbackVectorDB(self.collection_name)
-            logging.warning(f"Using fallback vector database due to error: {str(e)}")
+            logging.error(f"Chroma init failed: {e}")
+            raise
     
+    
+
     def add_documents(self, documents: List[Dict[str, Any]]):
         """
         Add documents to the vector database

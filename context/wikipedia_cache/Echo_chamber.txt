@@ -1,0 +1,116 @@
+In the context of news media and social media, an echo chamber is an environment or ecosystem in which participants encounter beliefs that amplify or reinforce their preexisting beliefs by communication and repetition inside a closed system and insulated from rebuttal. The echo chambers function by circulating existing views without encountering opposing views, potentially leading to three cognitive biases: correlation neglect, selection bias and confirmation bias. Echo chambers may increase social and political polarization and extremism. On social media, it is thought that echo chambers limit exposure to diverse perspectives, and favor and reinforce presupposed narratives and ideologies.
+The term is a metaphor based on an acoustic echo chamber, in which sounds reverberate in a hollow enclosure. Another emerging term for this echoing and homogenizing effect within social-media communities on the Internet is neotribalism.
+Many scholars note the effects that echo chambers can have on citizens' stances and viewpoints, and specifically implications has for politics. However, some studies have suggested that the effects of echo chambers are weaker than often assumed.
+
+
+== Concept ==
+The Internet has expanded the variety and amount of accessible political information. On the positive side, this may create a more pluralistic form of public debate; on the negative side, greater access to information may lead to selective exposure to ideologically supportive channels. In an extreme "echo chamber", one purveyor of information will make a claim, which many like-minded people then repeat, overhear, and repeat again (often in an exaggerated or otherwise distorted form) until most people assume that some extreme variation of the story is true.
+The echo chamber effect occurs online when a harmonious group of people amalgamate and develop tunnel vision. Participants in online discussions may find their opinions constantly echoed back to them, which reinforces their individual belief systems due to the declining exposure to other's opinions. Their individual belief systems are what culminate into a confirmation bias regarding a variety of subjects. When an individual wants something to be true, they often will only gather the information that supports their existing beliefs and disregard any statements they find that are contradictory or speak negatively upon their beliefs. Individuals who participate in echo chambers often do so because they feel more confident that their opinions will be more readily accepted by others in the echo chamber. This happens because the Internet has provided access to a wide range of readily available information. People are receiving their news online more rapidly through less traditional sources, such as Facebook, Google, and Twitter. These and many other social platforms and online media outlets have established personalized algorithms intended to cater specific information to individuals’ online feeds. This method of curating content has replaced the function of the traditional news editor. The mediated spread of information through online networks causes a risk of an algorithmic filter bubble, leading to concern regarding how the effects of echo chambers on the internet promote the division of online interaction.
+Members of an echo chamber are not fully responsible for their convictions. Once part of an echo chamber, an individual might adhere to seemingly acceptable epistemic practices and still be further misled. Many individuals may be stuck in echo chambers due to factors existing outside of their control, such as being raised in one.
+Furthermore, the function of an echo chamber does not entail eroding a member's interest in truth; it focuses upon manipulating their credibility levels so that fundamentally different establishments and institutions will be considered proper sources of authority.
+
+
+== Empirical research ==
+However, empirical findings to clearly support these concerns are needed  and the field is very fragmented when it comes to empirical results. There are some studies that do measure echo chamber effects, such as the study of Bakshy et al. (2015). In this study the researchers found that people tend to share news articles they align with. Similarly,  they discovered a homophily in online friendships, meaning people are more likely to be connected on social media if they have the same political ideology. In combination, this can lead to echo chamber effects. Bakshy et al. found that a person's potential exposure to cross-cutting content (content that is opposite to their own political beliefs) through their own network is only 24% for liberals and 35% for conservatives. Other studies argue that expressing cross-cutting content is an important measure of echo chambers: Bossetta et al. (2023) find that 29% of Facebook comments during Brexit were cross-cutting expressions. Therefore, echo chambers might be present in a person's media diet but not in how they interact with others on social media.
+
+Another set of studies suggests that echo chambers exist, but that these are not a widespread phenomenon: Based on survey data, Dubois and Blank (2018) show that most people do consume news from various sources, while around 8% consume media with low diversity. Similarly, Rusche (2022) shows that, most Twitter users do not show behavior that resembles that of an echo chamber. However, through high levels of online activity, the small group of users that do, make up a substantial share populist politicians' followers, thus creating homogeneous online spaces.
+Finally, there are other studies which contradict the existence of echo chambers. Some found that people also share news reports that don't align with their political beliefs.
+Others found that people using social media are being exposed to more diverse sources than people not using social media.
+In summation, it remains that clear and distinct findings are absent which either confirm or falsify the concerns of echo chamber effects.
+Research on the social dynamics of echo chambers shows that the fragmented nature of online culture, the importance of collective identity construction, and the argumentative nature of online controversies can generate echo chambers where participants encounter self-reinforcing beliefs. Researchers show that echo chambers are prime vehicles to disseminate disinformation, as participants exploit contradictions against perceived opponents amidst identity-driven controversies. As echo chambers build upon identity politics and emotion, they can contribute to political polarization and neotribalism.
+
+
+=== Difficulties of researching processes ===
+Echo chamber studies fail to achieve consistent and comparable results due to unclear definitions, inconsistent measurement methods, and unrepresentative data. Social media platforms continually change their algorithms, and most studies are conducted in the US, limiting their application to political systems with more parties.
+
+
+== Echo chambers vs epistemic bubbles ==
+In recent years, closed epistemic networks have increasingly been held responsible for the era of post-truth and fake news. However, the media frequently conflates two distinct concepts of social epistemology: echo chambers and epistemic bubbles.
+An epistemic bubble is an informational network in which important sources have been excluded by omission, perhaps unintentionally. It is an impaired epistemic framework which lacks strong connectivity. Members within epistemic bubbles are unaware of significant information and reasoning.
+On the other hand, an echo chamber is an epistemic construct in which voices are actively excluded and discredited. It does not suffer from a lack in connectivity; rather it depends on a manipulation of trust by methodically discrediting all outside sources. According to research conducted by the University of Pennsylvania, members of echo chambers become dependent on the sources within the chamber and highly resistant to any external sources.
+An important distinction exists in the strength of the respective epistemic structures. Epistemic bubbles are not particularly robust. Relevant information has merely been left out, not discredited. One can ‘pop’ an epistemic bubble by exposing a member to the information and sources that they have been missing.
+Echo chambers, however, are incredibly strong. By creating pre-emptive distrust between members and non-members, insiders will be insulated from the validity of counter-evidence and will continue to reinforce the chamber in the form of a closed loop. Outside voices are heard, but dismissed.
+As such, the two concepts are fundamentally distinct and cannot be utilized interchangeably. However, one must note that this distinction is conceptual in nature, and an epistemic community can exercise multiple methods of exclusion to varying extents.
+
+
+=== Similar concepts ===
+
+A filter bubble, coined by internet activist Eli Pariser, is a state of intellectual isolation that allegedly can result from personalized searches when a website algorithm selectively guesses what information a user would like to see based on information about the user, such as location, past click-behavior and search history. As a result, users become separated from information that disagrees with their viewpoints, effectively isolating them in their own cultural or ideological bubbles. The choices made by these algorithms are not transparent.
+
+Homophily is the tendency of individuals to associate and bond with similar others, as in the proverb "birds of a feather flock together". The presence of homophily has been detected in a vast array of network studies. For example, a study conducted by Bakshy et. al. explored the data of 10.1 million Facebook users. These users identified as either politically liberal, moderate, or conservative, and the vast majority of their friends were found to have a political orientation that was similar to their own. Facebook algorithms recognize this and selects information with a bias towards this political orientation to showcase in their newsfeed.
+
+Recommender systems are information filtering systems put in place on different platforms that provide recommendations depending on information gathered from the user. In general, recommendations are provided in three different ways: based on content that was previously selected by the user, content that has similar properties or characteristics to that which has been previously selected by the user, or a combination of both.
+Both echo chambers and filter bubbles relate to the ways individuals are exposed to content devoid of clashing opinions, and colloquially might be used interchangeably. However, echo chamber refers to the overall phenomenon by which individuals are exposed only to information from like-minded individuals, while filter bubbles are a result of algorithms that choose content based on previous online behavior, as with search histories or online shopping activity. Indeed, specific combinations of homophily and recommender systems have been identified as significant drivers for determining the emergence of echo chambers.
+
+Culture wars are cultural conflicts between social groups that have conflicting values and beliefs. It refers to "hot button" topics on which societal polarization occurs. A culture war is defined as "the phenomenon in which multiple groups of people, who hold entrenched values and ideologies, attempt to contentiously steer public policy." Echo chambers on social media have been identified as playing a role on  how multiple social groups, holding distinct values and ideologies, create groups circulate conversations through conflict and controversy.
+
+
+== Implications of echo chambers ==
+
+
+=== Online communities ===
+
+Online social communities become fragmented by echo chambers when like-minded people group together and members hear arguments in one specific direction with no counter argument addressed. In certain online platforms, such as Twitter, echo chambers are more likely to be found when the topic is more political in nature compared to topics that are seen as more neutral. Social networking communities are communities that are considered to be some of the most powerful reinforcements of rumors due to the trust in the evidence supplied by their own social group and peers, over the information circulating the news. In addition to this, the reduction of fear that users can enjoy through projecting their views on the internet versus face-to-face allows for further engagement in agreement with their peers.
+This can create significant barriers to critical discourse within an online medium. Social discussion and sharing can potentially suffer when people have a narrow information base and do not reach outside their network.  Essentially, the filter bubble can distort one's reality in ways which are not believed to be alterable by outside sources.
+
+Findings by Tokita et al. (2021) suggest that individuals’ behavior within echo chambers may dampen their access to information even from desirable sources. In highly polarized information environments, individuals who are highly reactive to socially-shared information are more likely than their less reactive counterparts to curate politically homogenous information environments and experience decreased information diffusion in order to avoid overreacting to news they deem unimportant. This makes these individuals more likely to develop extreme opinions and to overestimate the degree to which they are informed.
+Research has also shown that misinformation can become more viral as a result of echo chambers, as the echo chambers provide an initial seed which can fuel broader viral diffusion.
+
+
+=== Offline communities ===
+Many offline communities are also segregated by political beliefs and cultural views. The echo chamber effect may prevent individuals from noticing changes in language and culture involving groups other than their own. Online echo chambers can sometimes influence an individual's willingness to participate in similar discussions offline. A 2016 study found that "Twitter users who felt their audience on Twitter agreed with their opinion were more willing to speak out on that issue in the workplace".
+Group polarization can occur as a result of growing echo chambers. The lack of external viewpoints and the presence of a majority of individuals sharing a similar opinion or narrative can lead to a more extreme belief set. Group polarisation can also aid the current of fake news and misinformation through social media platforms. This can extend to offline interactions, with data revealing that offline interactions can be as polarising as online interactions (Twitter), arguably due to social media-enabled debates being highly fragmented.
+
+
+== Examples ==
+
+Echo chambers have existed in many forms. Examples cited since the late 20th century include:
+
+News coverage of the 1980s McMartin preschool trial was criticized by David Shaw in a series of 1990 Pulitzer Prize winning articles as an echo chamber. Shaw noted that, despite the charges in the trial never being proven, news media reporting on the trial "largely acted in a pack" and "fed on one another", creating an "echo chamber of horrors" where journalists ultimately abandoned journalistic principles and sensationalized coverage to be "the first with the latest shocking allegation".
+Conservative radio host Rush Limbaugh and his radio show were categorized as an echo chamber in the first empirical study concerning echo chambers by researchers Kathleen Hall Jamieson and Frank Capella in their 2008 book Echo Chamber: Rush Limbaugh and the Conservative Media Establishment.
+The Clinton–Lewinsky scandal reporting was chronicled in Time magazine's 16 February 1998 "Trial by Leaks" cover story "The Press And The Dress: The anatomy of a salacious leak, and how it ricocheted around the walls of the media echo chamber" by Adam Cohen. This case was also reviewed in depth by the Project for Excellence in Journalism in "The Clinton/Lewinsky Story: How Accurate? How Fair?"
+A New Statesman essay argued that echo chambers were linked to the United Kingdom Brexit referendum.
+The subreddit /r/incels and other online incel communities have also been described as echo chambers.
+Discussion concerning opioid drugs and whether or not they should be considered suitable for long-term pain maintenance has been described as an echo chamber capable of affecting drug legislation.
+The 2016 United States presidential election was described as an echo chamber, as information on the campaigns were exchanged primarily among individuals with similar political and ideological views. Donald Trump and Hillary Clinton were extremely vocal on Twitter throughout the electoral campaigns, bringing many vocal opinion leaders to the platform. A study conducted by Guo et. al. showed that Twitter communities in support of Trump and Clinton differed significantly, and those that were most vocal were responsible for creating echo chambers within these communities.
+The network of social media accounts and communities harboring and circulating the Flat Earth theory has been described as an echo chamber.
+Since the creation of the internet, scholars have been curious to see the changes in political communication. Due to the new changes in information technology and how it is managed, it is unclear how opposing perspectives can reach common ground in a democracy. The effects seen from the echo chamber effect has largely been cited to occur in politics, such as Twitter and Facebook during the 2016 presidential election in the United States. Some believe that echo chambers played a big part in the success of Donald Trump in the 2016 presidential elections.
+
+
+== Countermeasures ==
+
+
+=== From media companies ===
+Some companies have also made efforts in combating the effects of an echo chamber on an algorithmic approach. A high-profile example of this is the changes Facebook made to its "Trending" page, which is an on-site news source for its users. Facebook modified their "Trending" page by transitioning from displaying a single news source to multiple news sources for a topic or event. The intended purpose of this was to expand the breadth of news sources for any given headline, and therefore expose readers to a variety of viewpoints. There are startups building apps with the mission of encouraging users to open their echo chambers, such as UnFound.news. Another example is a beta feature on BuzzFeed News called "Outside Your Bubble", which adds a module to the bottom of BuzzFeed News articles to show reactions from various platforms like Twitter, Facebook, and Reddit. This concept aims to bring transparency and prevent biased conversations, diversifying the viewpoints their readers are exposed to.
+
+
+== See also ==
+
+Algorithmic curation – Curation of media using computer algorithms
+Algorithmic radicalization – Radicalization via social media algorithms
+Availability cascade – Explanation for types of collective belief
+Brain rot – Slang for poor-quality digital content
+Circular source – Multiple sources for single-source dataPages displaying short descriptions of redirect targets
+Communal reinforcement – Social phenomenon
+Dead Internet theory – Conspiracy theory on online bot activity
+Enshittification – Systematic decline in online platform quality
+False consensus effect – Attributional type of cognitive bias
+Filter bubble – Intellectual isolation through internet algorithms
+Groupthink – Psychological phenomenon that occurs within a group of people
+Homophily – Process by which people befriend similar people
+Ideological bias on Wikipedia
+Idiocracy – 2006 film by Mike Judge
+Influencer speak – Speech pattern used in digital content
+Infodemic – Rapid spread of accurate and inaccurate information
+Opinion corridor – Theory of legitimate public discourse
+Positive feedback – Feedback loop that increases an initial small effect
+Safe-space – Socially safe zone for communicationPages displaying short descriptions of redirect targets
+Selective exposure theory – Theory within the practice of psychology
+Social media stock bubble
+Social media as a news source - How people use social media for information
+Splinternet – Characterization of the Internet as splintering and dividing
+Tribe (Internet) – Slang for an unofficial community of people who share a common interestPages displaying short descriptions of redirect targets
+Woozle effect – False credibility due to quantity of citations
+
+
+== References ==
