@@ -1,0 +1,11 @@
+{
+  "trend_threshold": 2.0,
+  "growth_threshold": 1.0,
+  "volume_threshold": 100,
+  "keywords": [],
+  "enabled": true,
+  "notification_methods": [
+    "email"
+  ],
+  "check_interval": 300
+}

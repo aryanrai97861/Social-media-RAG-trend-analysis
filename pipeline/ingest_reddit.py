@@ -5,9 +5,13 @@ from datetime import datetime, timezone
 from sqlalchemy import create_engine, text as sql
 from typing import List, Optional
 import logging
+from dotenv import load_dotenv
 from .normalize import get_normalizer, NormalizedPost
 from .features import extract_entities
 from database.schema import get_engine
+
+# Load environment variables
+load_dotenv()
 
 class RedditIngester:
     """Handles Reddit content ingestion"""
