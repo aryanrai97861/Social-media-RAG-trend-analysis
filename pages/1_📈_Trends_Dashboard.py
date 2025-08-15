@@ -4,10 +4,12 @@ import plotly.express as px
 import plotly.graph_objects as go
 from datetime import datetime, timedelta
 import numpy as np
+from sqlalchemy import text
 from database.schema import get_engine
 from components.charts import create_trend_chart, create_heatmap
 from components.cards import trend_card
 from utils.config import load_config
+from utils.db_utils import get_quick_stats
 
 st.set_page_config(
     page_title="Trends Dashboard",
@@ -22,15 +24,16 @@ def load_trends_data():
     try:
         engine = get_engine()
         
-        # Load trend data
-        trends_df = pd.read_sql("""
+        # Load trend data using SQLAlchemy text
+        query = text("""
             SELECT entity, current_count, baseline_count, trend_score, 
                    growth_rate, created_at, platform
             FROM trends 
             WHERE created_at > datetime('now', '-7 days')
             ORDER BY trend_score DESC
             LIMIT 100
-        """, engine)
+        """)
+        trends_df = pd.read_sql_query(query, engine)
         
         if trends_df.empty:
             return pd.DataFrame(), pd.DataFrame()
@@ -38,14 +41,15 @@ def load_trends_data():
         trends_df['created_at'] = pd.to_datetime(trends_df['created_at'])
         
         # Load time series data
-        timeseries_df = pd.read_sql("""
+        query = text("""
             SELECT DATE(created_at) as date, COUNT(*) as post_count,
                    platform
             FROM posts 
             WHERE created_at > datetime('now', '-30 days')
             GROUP BY DATE(created_at), platform
             ORDER BY date DESC
-        """, engine)
+        """)
+        timeseries_df = pd.read_sql_query(query, engine)
         
         timeseries_df['date'] = pd.to_datetime(timeseries_df['date'])
         
@@ -58,6 +62,11 @@ def load_trends_data():
 def main():
     st.title("📈 Trends Dashboard")
     st.markdown("Real-time analysis of trending topics across social media platforms")
+    
+    # Show quick stats
+    engine = get_engine()
+    from components.stats import show_quick_stats
+    show_quick_stats(engine)
     
     # Load data
     trends_df, timeseries_df = load_trends_data()
