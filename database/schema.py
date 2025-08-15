@@ -8,7 +8,16 @@ from datetime import datetime
 import sqlite3
 
 # Database configuration
-DB_PATH = os.getenv('DB_PATH', './data/social.db')
+DB_PATH = os.path.abspath(os.getenv('DB_PATH', './data/social.db'))
+
+def get_engine():
+    """Get SQLAlchemy engine instance"""
+    db_dir = os.path.dirname(DB_PATH)
+    if not os.path.exists(db_dir):
+        os.makedirs(db_dir)
+    
+    engine = create_engine(f'sqlite:///{DB_PATH}', echo=False)
+    return engine
 
 # Create Base class for ORM models
 Base = declarative_base()
