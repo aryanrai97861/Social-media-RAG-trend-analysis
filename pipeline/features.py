@@ -8,34 +8,36 @@ import logging
 HASHTAG_PATTERN = re.compile(r'(?i)#[a-z0-9_]+')
 MENTION_PATTERN = re.compile(r'(?i)@[a-z0-9_]+')
 URL_PATTERN = re.compile(r'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+')
-WORD_PATTERN = re.compile(r'(?i)\b[a-z][a-z0-9_\']*\b')
+WORD_PATTERN = re.compile(r'(?i)\b[a-z][a-z0-9_\'-]+[a-z0-9_]\b')  # Modified to require at least 3 chars
 EMAIL_PATTERN = re.compile(r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b')
+HTML_PATTERN = re.compile(r'<[^>]+>')  # Pattern to match HTML tags
 
 # Common stop words
-STOP_WORDS = set([
-    'a', 'an', 'and', 'are', 'as', 'at', 'be', 'by', 'for', 'from',
-    'has', 'he', 'in', 'is', 'it', 'its', 'of', 'on', 'that', 'the',
-    'to', 'was', 'were', 'will', 'with', 'the', 'this', 'but', 'they',
-    'have', 'had', 'what', 'said', 'each', 'which', 'their', 'time',
-    'if', 'up', 'out', 'many', 'then', 'them', 'these', 'so', 'some',
-    'her', 'would', 'make', 'like', 'into', 'him', 'has', 'two',
-    'more', 'very', 'after', 'words', 'its', 'just', 'where', 'most',
-    'now', 'people', 'my', 'made', 'over', 'did', 'down', 'only', 'way',
-    'find', 'use', 'may', 'water', 'long', 'little', 'get', 'through',
-    'back', 'much', 'before', 'go', 'good', 'new', 'write', 'our',
-    'used', 'me', 'man', 'too', 'any', 'day', 'same', 'right', 'look',
-    'think', 'also', 'around', 'another', 'came', 'come', 'work',
-    'three', 'must', 'because', 'does', 'part', 'even', 'place',
-    'well', 'such', 'here', 'take', 'why', 'help', 'put', 'different',
-    "away", "turn", "want", "every", "don\'t", "should", "never",
-    'year', 'still', 'public', 'read', 'know', 'large', 'available',
-    'end', 'become', 'member', 'please', 'including', 'old', 'see',
-    'however', 'given', 'both', 'important', 'though', 'information',
-    'nothing', 'those', 'business', 'home', 'mr', 'ms', 'dr', 'could',
-    'would', 'should', 'might', 'need', 'want', 'going', 'doing',
-    'reddit', 'post', 'comment', 'submission', 'thread', 'op', 'edit',
-    'deleted', 'removed'
-])
+STOP_WORDS: Set[str] = {
+    'i', 'me', 'my', 'myself', 'we', 'our', 'ours', 'ourselves', 'you', "you're",
+    "you've", "you'll", "you'd", 'your', 'yours', 'yourself', 'yourselves',
+    'he', 'him', 'his', 'himself', 'she', "she's", 'her', 'hers', 'herself',
+    'it', "it's", 'its', 'itself', 'they', 'them', 'their', 'theirs', 'themselves',
+    'what', 'which', 'who', 'whom', 'this', 'that', "that'll", 'these', 'those',
+    'am', 'is', 'are', 'was', 'were', 'be', 'been', 'being', 'have', 'has', 'had',
+    'having', 'do', 'does', 'did', 'doing', 'a', 'an', 'the', 'and', 'but', 'if',
+    'or', 'because', 'as', 'until', 'while', 'of', 'at', 'by', 'for', 'with',
+    'about', 'against', 'between', 'into', 'through', 'during', 'before', 'after',
+    'above', 'below', 'to', 'from', 'up', 'down', 'in', 'out', 'on', 'off', 'over',
+    'under', 'again', 'further', 'then', 'once', 'here', 'there', 'when', 'where',
+    'why', 'how', 'all', 'any', 'both', 'each', 'few', 'more', 'most', 'other',
+    'some', 'such', 'no', 'nor', 'not', 'only', 'own', 'same', 'so', 'than', 'too',
+    'very', 's', 't', 'can', 'will', 'just', 'don', "don't", 'should', "should've",
+    'now', 'd', 'll', 'm', 'o', 're', 've', 'y', 'ain', 'aren', "aren't", 'couldn',
+    "couldn't", 'didn', "didn't", 'doesn', "doesn't", 'hadn', "hadn't", 'hasn',
+    "hasn't", 'haven', "haven't", 'isn', "isn't", 'ma', 'mightn', "mightn't", 'mustn',
+    "mustn't", 'needn', "needn't", 'shan', "shan't", 'shouldn', "shouldn't", 'wasn',
+    "wasn't", 'weren', "weren't", 'won', "won't", 'wouldn', "wouldn't",
+    # HTML and web-related stop words
+    'http', 'https', 'www', 'com', 'html', 'href', 'span', 'div', 'class', 'src',
+    'alt', 'img', 'width', 'height', 'style', 'rel', 'id', 'type', 'content',
+    'target', 'title', 'xmlns', 'lang', 'meta', 'name', 'value', 'charset'
+}
 
 # Internet slang and abbreviations
 INTERNET_SLANG = {
@@ -72,16 +74,26 @@ def tokenize(text: str) -> List[str]:
     if not text:
         return []
     
+    # Remove HTML tags first
+    text = HTML_PATTERN.sub(' ', text)
+    
     # Convert to lowercase and find words
     words = WORD_PATTERN.findall(text.lower())
     
-    # Filter out stop words and short words
+    # Filter out stop words, short words, numbers, and HTML-like strings
     tokens = []
     for word in words:
-        if len(word) >= 3 and word not in STOP_WORDS:
+        if (len(word) >= 3 and  # Minimum length
+            word not in STOP_WORDS and  # Not a stop word
+            not word.isdigit() and  # Not just numbers
+            not any(char in word for char in '<>{}[]()') and  # No markup characters
+            not word.startswith(('http', 'www', 'html', 'src', 'href'))):  # Not URL/HTML related
+            
             # Normalize internet slang
             normalized_word = INTERNET_SLANG.get(word, word)
-            tokens.append(normalized_word)
+            # Don't include parts of URLs as tokens
+            if '.' not in normalized_word:
+                tokens.append(normalized_word)
     
     return tokens
 
@@ -96,9 +108,29 @@ def extract_mentions(text: str) -> List[str]:
     return [mention.lower() for mention in mentions]
 
 def extract_urls(text: str) -> List[str]:
-    """Extract URLs from text"""
+    """Extract URLs from text and return meaningful parts"""
     urls = URL_PATTERN.findall(text)
-    return urls
+    meaningful_parts = []
+    
+    for url in urls:
+        try:
+            from urllib.parse import urlparse
+            parsed = urlparse(url)
+            # Get hostname without www.
+            hostname = parsed.netloc.replace('www.', '')
+            # Only include non-empty hostnames over 3 chars
+            if hostname and len(hostname) > 3:
+                meaningful_parts.append(hostname)
+                
+            # Get meaningful path components
+            path_parts = [p for p in parsed.path.split('/') if p and len(p) > 3]
+            meaningful_parts.extend(path_parts)
+            
+        except Exception as e:
+            logging.debug(f"Error parsing URL {url}: {str(e)}")
+            continue
+            
+    return list(set(meaningful_parts))
 
 def extract_emails(text: str) -> List[str]:
     """Extract email addresses from text"""
@@ -141,6 +173,9 @@ def extract_entities(text: str) -> List[str]:
         return []
     
     try:
+        # First remove any HTML tags
+        text = HTML_PATTERN.sub(' ', text)
+        
         entities = set()
         
         # Extract hashtags (without #)
@@ -360,6 +395,54 @@ def calculate_engagement_score(text: str) -> float:
     except Exception as e:
         logging.error(f"Error calculating engagement score: {str(e)}")
         return 0.0
+
+def clean_text(text: str) -> str:
+    """
+    Remove HTML tags and URLs, normalize whitespace.
+    """
+    if not text:
+        return ''
+    # remove HTML tags
+    text = HTML_PATTERN.sub(' ', text)
+    # remove URLs
+    text = URL_PATTERN.sub(' ', text)
+    # remove emails
+    text = EMAIL_PATTERN.sub(' ', text)
+    # normalize whitespace
+    text = re.sub(r'\s+', ' ', text).strip()
+    return text
+
+def extract_tokens(text: str) -> List[str]:
+    """
+    Return filtered list of word tokens suitable for topic extraction.
+    """
+    cleaned = clean_text(text).lower()
+    tokens = WORD_PATTERN.findall(cleaned)
+    filtered = []
+    for t in tokens:
+        t = t.strip("_' -")
+        # skip if stop word, contains dot/slash/colon (likely url/domain), or no alpha chars
+        if (len(t) < 3 or
+            t in STOP_WORDS or
+            '.' in t or '/' in t or ':' in t or
+            not re.search(r'[a-z]', t)):
+            continue
+        filtered.append(t)
+    return filtered
+
+def extract_features(text: str) -> Dict[str, int]:
+    """
+    Example feature extraction that uses cleaned tokens and counts.
+    """
+    tokens = extract_tokens(text)
+    cnt = Counter(tokens)
+    hashtags = HASHTAG_PATTERN.findall(text) or []
+    mentions = MENTION_PATTERN.findall(text) or []
+    return {
+        'tokens': cnt,
+        'hashtags': hashtags,
+        'mentions': mentions
+    }
 
 def extract_all_features(text: str) -> Dict:
     """
