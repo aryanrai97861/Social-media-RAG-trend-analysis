@@ -19,6 +19,7 @@ from alerts.notifier import get_notifier
 from database.schema import get_engine
 from utils.config import load_config
 import pandas as pd
+from sqlalchemy import text as sql
 
 def setup_logging(verbose: bool = False):
     """Setup logging configuration"""
@@ -239,10 +240,10 @@ def cleanup_old_trends(days_to_keep: int = 30):
         
         # Delete old records
         with engine.begin() as conn:
-            result = conn.execute(f"""
+            result = conn.execute(sql(f"""
                 DELETE FROM trends 
                 WHERE datetime(created_at) < datetime('now', '-{days_to_keep} days')
-            """)
+            """))
             deleted_count = result.rowcount
         
         logging.info(f"🧹 Cleaned up {deleted_count} old trend records (kept {days_to_keep} days)")

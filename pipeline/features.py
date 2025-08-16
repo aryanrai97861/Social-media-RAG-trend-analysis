@@ -39,6 +39,16 @@ STOP_WORDS: Set[str] = {
     'target', 'title', 'xmlns', 'lang', 'meta', 'name', 'value', 'charset'
 }
 
+# Additional generic tokens that commonly surface as noisy "trends"
+# These reduce false positives like 'new', 'would', 'like', etc.
+EXTRA_GENERIC_STOP_WORDS = {
+    'new', 'would', 'could', 'like', 'people', 'get', 'got', 'make', 'one', 'day',
+    'today', 'time', 'news', 'also', 'say', 'says', 'said', 'really', 'see', 'used'
+}
+
+# Merge into STOP_WORDS
+STOP_WORDS.update(EXTRA_GENERIC_STOP_WORDS)
+
 # Internet slang and abbreviations
 INTERNET_SLANG = {
     'lol': 'laugh_out_loud',
@@ -71,30 +81,34 @@ def tokenize(text: str) -> List[str]:
     Returns:
         List of normalized tokens
     """
+    # Use the canonical cleaner so URLs/emails/HTML are removed everywhere
     if not text:
         return []
-    
-    # Remove HTML tags first
-    text = HTML_PATTERN.sub(' ', text)
-    
+
+    cleaned = clean_text(text).lower()
+
     # Convert to lowercase and find words
-    words = WORD_PATTERN.findall(text.lower())
-    
+    words = WORD_PATTERN.findall(cleaned)
+
     # Filter out stop words, short words, numbers, and HTML-like strings
-    tokens = []
+    tokens: List[str] = []
     for word in words:
-        if (len(word) >= 3 and  # Minimum length
-            word not in STOP_WORDS and  # Not a stop word
-            not word.isdigit() and  # Not just numbers
-            not any(char in word for char in '<>{}[]()') and  # No markup characters
-            not word.startswith(('http', 'www', 'html', 'src', 'href'))):  # Not URL/HTML related
-            
+        # basic sanitation
+        w = word.strip("_'-")
+        if (len(w) >= 3 and
+            w not in STOP_WORDS and
+            not w.isdigit() and
+            not any(char in w for char in '<>{}[]()') and
+            not w.startswith(('http', 'www', 'html', 'src', 'href')) and
+            re.search(r'[a-z]', w)):
+
             # Normalize internet slang
-            normalized_word = INTERNET_SLANG.get(word, word)
-            # Don't include parts of URLs as tokens
-            if '.' not in normalized_word:
-                tokens.append(normalized_word)
-    
+            normalized_word = INTERNET_SLANG.get(w, w)
+            # Skip tokens that contain dots/colons/slashes (likely URL parts)
+            if '.' in normalized_word or ':' in normalized_word or '/' in normalized_word:
+                continue
+            tokens.append(normalized_word)
+
     return tokens
 
 def extract_hashtags(text: str) -> List[str]:
@@ -171,27 +185,26 @@ def extract_entities(text: str) -> List[str]:
     """
     if not text:
         return []
-    
+
     try:
-        # First remove any HTML tags
-        text = HTML_PATTERN.sub(' ', text)
-        
+        # Remove HTML and normalize whitespace
+        clean = HTML_PATTERN.sub(' ', text)
+        clean = re.sub(r'\s+', ' ', clean).strip()
+
         entities = set()
-        
-        # Extract hashtags (without #)
-        hashtags = extract_hashtags(text)
-        entities.update([tag[1:] for tag in hashtags if len(tag) > 1])
-        
-        # Extract mentions (without @)
-        mentions = extract_mentions(text)
-        entities.update([mention[1:] for mention in mentions if len(mention) > 1])
-        
-        # Extract top keywords
-        keywords = extract_keywords(text, top_k=5)
-        entities.update([keyword for keyword, freq in keywords if freq >= 2])
-        
-        # Look for potential trending topics or named entities
-        # Simple patterns for common entities
+
+        # Hashtags and mentions
+        hashtags = extract_hashtags(clean)
+        entities.update([tag[1:].lower() for tag in hashtags if len(tag) > 1])
+
+        mentions = extract_mentions(clean)
+        entities.update([mention[1:].lower() for mention in mentions if len(mention) > 1])
+
+        # Top keywords (include single-occurrence to increase coverage)
+        keywords = extract_keywords(clean, top_k=5)
+        entities.update([keyword.lower() for keyword, freq in keywords if keyword])
+
+        # Simple entity pattern matching for known categories
         entity_patterns = {
             'covid': r'(?i)\b(covid|coronavirus|pandemic|vaccine|pfizer|moderna|omicron|delta)\b',
             'climate': r'(?i)\b(climate|global warming|greenhouse|carbon|emission|greta)\b',
@@ -201,24 +214,29 @@ def extract_entities(text: str) -> List[str]:
             'sports': r'(?i)\b(nfl|nba|fifa|olympics|superbowl|worldcup|playoff)\b',
             'entertainment': r'(?i)\b(netflix|disney|marvel|starwars|game of thrones|stranger things)\b'
         }
-        
-        for category, pattern in entity_patterns.items():
-            matches = re.findall(pattern, text)
-            if matches:
-                entities.update([match.lower() for match in matches])
-        
-        # Clean and filter entities
+
+        for pattern in entity_patterns.values():
+            for m in re.findall(pattern, clean):
+                # re.findall returns tuples for grouped patterns; normalize
+                if isinstance(m, tuple):
+                    for part in m:
+                        if part:
+                            entities.add(part.lower())
+                else:
+                    entities.add(m.lower())
+
+        # Clean and filter entities; allow hyphens and apostrophes
         cleaned_entities = []
         for entity in entities:
-            entity = entity.strip().lower()
-            if (len(entity) >= 3 and 
-                entity not in STOP_WORDS and 
-                not entity.isdigit() and
-                entity.isalnum()):
-                cleaned_entities.append(entity)
-        
+            e = entity.strip().lower()
+            if (len(e) >= 3 and
+                e not in STOP_WORDS and
+                not e.isdigit() and
+                re.match(r"^[a-z0-9\-']+$", e)):
+                cleaned_entities.append(e)
+
         return sorted(list(set(cleaned_entities)))
-        
+
     except Exception as e:
         logging.error(f"Error extracting entities: {str(e)}")
         return []
